@@ -103,9 +103,25 @@ function viewEmployees() {
     });
   }
 
+  // Function to add a department
 function addDepartment() {
-  // Prompt the user to enter a department name and add it to the database
-}
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "departmentName",
+          message: "Enter the name of the department:",
+        },
+      ])
+      .then((answers) => {
+        const query = "INSERT INTO departments (department_name) VALUES (?)";
+        db.query(query, [answers.departmentName], (err, results) => {
+          if (err) throw err;
+          console.log(`\nDepartment '${answers.departmentName}' added.`);
+          startApp();
+        });
+      });
+  }
 
 function addRole() {
   // Prompt the user to enter role details and add it to the database
