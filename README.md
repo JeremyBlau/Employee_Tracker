@@ -27,8 +27,8 @@ MIT
 ## Contributing
 NA
 
-## Tests
-NA
+## Screencastify Link
+[NA](https://watch.screencastify.com/v/vmgL5GAzSbl0XqTo1UZ7)
 
 ## Questions
 For any questions, please contact me at undefined. 
