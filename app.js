@@ -18,7 +18,7 @@ db.connect((err) => {
   // Create a custom font style
   const customFont = cfonts.render("Employee Tracker", {
     font: "block",
-    align: "center",
+    align: "left",
     colors: ["system"],
   });
 
