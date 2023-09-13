@@ -13,7 +13,7 @@ This project will allow the user to create and track their employees
 - [Questions](#questions)
 
 ## Screenshot
-<img width="979" alt="image" src="https://github.com/JeremyBlau/SVG_Logo_Maker/assets/134236414/932adcb7-78f5-4b76-a07b-62027f22dabf">
+<img width="1049" alt="image" src="https://github.com/JeremyBlau/Employee_Tracker/assets/134236414/4d94790c-9061-4d66-8e52-ce39f7986903">
 
 ## Installation
 Opend their terminal and use git clone [https://github.com/JeremyBlau/SVG_Logo_Maker.git](https://github.com/JeremyBlau/Employee_Tracker.git)
