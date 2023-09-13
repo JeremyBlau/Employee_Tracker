@@ -79,9 +79,17 @@ function viewDepartments() {
     });
   }
 
+// Function to view all roles
 function viewRoles() {
-  // Perform a SQL query to retrieve roles and display them in a formatted table
-}
+    const query =
+      "SELECT roles.role_id, roles.title, roles.salary, departments.department_name AS department FROM roles INNER JOIN departments ON roles.department_id = departments.department_id";
+    db.query(query, (err, results) => {
+      if (err) throw err;
+      console.log("\nList of Roles:");
+      console.table(results);
+      startApp();
+    });
+  }
 
 function viewEmployees() {
   // Perform a SQL query to retrieve employees and display them in a formatted table
