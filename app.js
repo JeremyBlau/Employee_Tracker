@@ -123,9 +123,40 @@ function addDepartment() {
       });
   }
 
+// Function to add a role
 function addRole() {
-  // Prompt the user to enter role details and add it to the database
-}
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "title",
+          message: "Enter the title of the role:",
+        },
+        {
+          type: "input",
+          name: "salary",
+          message: "Enter the salary for the role:",
+        },
+        {
+          type: "input",
+          name: "departmentId",
+          message: "Enter the department ID for the role:",
+        },
+      ])
+      .then((answers) => {
+        const query =
+          "INSERT INTO roles (title, salary, department_id) VALUES (?, ?, ?)";
+        db.query(
+          query,
+          [answers.title, answers.salary, answers.departmentId],
+          (err, results) => {
+            if (err) throw err;
+            console.log(`\nRole '${answers.title}' added.`);
+            startApp();
+          }
+        );
+      });
+  }
 
 function addEmployee() {
   // Prompt the user to enter employee details and add them to the database
