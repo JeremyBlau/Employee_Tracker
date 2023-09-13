@@ -91,9 +91,17 @@ function viewRoles() {
     });
   }
 
+// Function to view all employees
 function viewEmployees() {
-  // Perform a SQL query to retrieve employees and display them in a formatted table
-}
+    const query =
+      "SELECT employees.employee_id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.department_name AS department, CONCAT(managers.first_name, ' ', managers.last_name) AS manager FROM employees LEFT JOIN roles ON employees.role_id = roles.role_id LEFT JOIN departments ON roles.department_id = departments.department_id LEFT JOIN employees AS managers ON employees.manager_id = managers.employee_id";
+    db.query(query, (err, results) => {
+      if (err) throw err;
+      console.log("\nList of Employees:");
+      console.table(results);
+      startApp();
+    });
+  }
 
 function addDepartment() {
   // Prompt the user to enter a department name and add it to the database
