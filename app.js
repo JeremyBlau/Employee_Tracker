@@ -158,10 +158,73 @@ function addRole() {
       });
   }
 
+// Function to add an employee
 function addEmployee() {
-  // Prompt the user to enter employee details and add them to the database
-}
-
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "firstName",
+          message: "Enter the employee's first name:",
+        },
+        {
+          type: "input",
+          name: "lastName",
+          message: "Enter the employee's last name:",
+        },
+        {
+          type: "input",
+          name: "roleId",
+          message: "Enter the role ID for the employee:",
+        },
+        {
+          type: "input",
+          name: "managerId",
+          message: "Enter the manager's employee ID (or leave empty if none):",
+        },
+      ])
+      .then((answers) => {
+        const query =
+          "INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)";
+        db.query(
+          query,
+          [answers.firstName, answers.lastName, answers.roleId, answers.managerId || null],
+          (err, results) => {
+            if (err) throw err;
+            console.log(`\nEmployee '${answers.firstName} ${answers.lastName}' added.`);
+            startApp();
+          }
+        );
+      });
+  }
+// Function to update an employee's role
 function updateEmployeeRole() {
-  // Prompt the user to select an employee and update their role in the database
-}
+    // Prompt the user to select an employee to update
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "employeeId",
+          message: "Enter the ID of the employee you want to update:",
+        },
+        {
+          type: "input",
+          name: "newRoleId",
+          message: "Enter the new role ID for the employee:",
+        },
+      ])
+      .then((answers) => {
+        // Perform the SQL update query to update the employee's role
+        const query =
+          "UPDATE employees SET role_id = ? WHERE employee_id = ?";
+        db.query(
+          query,
+          [answers.newRoleId, answers.employeeId],
+          (err, results) => {
+            if (err) throw err;
+            console.log(`\nEmployee's role updated.`);
+            startApp();
+          }
+        );
+      });
+  }
