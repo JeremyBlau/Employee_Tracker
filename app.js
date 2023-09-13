@@ -1,18 +1,30 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
+const cfonts = require("cfonts"); // Import cfonts
 
 // Create a MySQL connection
 const db = mysql.createConnection({
   host: "localhost",
-  user: "your_username",
-  password: "your_password",
-  database: "your_database_name",
+  user: "root",
+  password: "4bundantly",
+  database: "mycompanydb",
 });
 
 // Connect to the database
 db.connect((err) => {
   if (err) throw err;
   console.log("Connected to the database");
+
+  // Create a custom font style
+  const customFont = cfonts.render("Employee Tracker", {
+    font: "block",
+    align: "center",
+    colors: ["system"],
+  });
+
+  // Display the custom font style
+  console.log(customFont.string);
+
   startApp();
 });
 
