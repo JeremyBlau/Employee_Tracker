@@ -70,8 +70,14 @@ function startApp() {
 // Implement functions for each user action (e.g., viewDepartments, viewRoles, etc.)
 
 function viewDepartments() {
-  // Perform a SQL query to retrieve departments and display them in a formatted table
-}
+    const query = "SELECT department_id, department_name FROM departments";
+    db.query(query, (err, results) => {
+      if (err) throw err;
+      console.log("\nList of Departments:");
+      console.table(results);
+      startApp();
+    });
+  }
 
 function viewRoles() {
   // Perform a SQL query to retrieve roles and display them in a formatted table
